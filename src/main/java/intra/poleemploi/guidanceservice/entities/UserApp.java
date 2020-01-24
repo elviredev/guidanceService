@@ -23,4 +23,7 @@ public class UserApp implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="userapp_roles", joinColumns=@JoinColumn(name="user_app_id"), inverseJoinColumns=@JoinColumn(name="roles_id"))
     private Collection<RoleApp> roles = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name="userapp_applis", joinColumns = @JoinColumn(name="user_app_id"), inverseJoinColumns = @JoinColumn(name="applis_id"))
+    private Set<Appli> applis;
 }

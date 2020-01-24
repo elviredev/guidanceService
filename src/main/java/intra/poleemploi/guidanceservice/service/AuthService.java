@@ -9,4 +9,5 @@ public interface AuthService {
     UserApp loadUserAppByUsername(String username);
     RoleApp saveRoleApp(RoleApp role);
     void addRoleToUser(String username, String roleName);
+    void addAppliToUser(String username, String appliName);
 }

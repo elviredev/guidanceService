@@ -1,7 +1,9 @@
 package intra.poleemploi.guidanceservice.service;
 
+import intra.poleemploi.guidanceservice.dao.AppliRepository;
 import intra.poleemploi.guidanceservice.dao.RoleAppRepository;
 import intra.poleemploi.guidanceservice.dao.UserAppRepository;
+import intra.poleemploi.guidanceservice.entities.Appli;
 import intra.poleemploi.guidanceservice.entities.RoleApp;
 import intra.poleemploi.guidanceservice.entities.UserApp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class AuthServiceImpl implements AuthService {
     private UserAppRepository userAppRepository;
     @Autowired
     private RoleAppRepository roleAppRepository;
+    @Autowired
+    private AppliRepository appliRepository;
    /* @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;*/
 
@@ -62,5 +66,12 @@ public class AuthServiceImpl implements AuthService {
         RoleApp roleApp = roleAppRepository.findRoleByRoleName(roleName);
         // ajout role à user
         userApp.getRoles().add(roleApp);
+    }
+
+    @Override
+    public void addAppliToUser(String username, String appliName) {
+        UserApp userApp = userAppRepository.findUserByUsername(username);
+        Appli appli = appliRepository.findAppliByAppliName(appliName);
+        userApp.getApplis().add(appli);
     }
 }
