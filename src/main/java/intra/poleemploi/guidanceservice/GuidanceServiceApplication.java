@@ -25,7 +25,7 @@ public class GuidanceServiceApplication{
 		SpringApplication.run(GuidanceServiceApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	CommandLineRunner start(AuthService authService, UserAppRepository userAppRepository){
 		return args -> {
 			authService.saveRoleApp(new RoleApp(null, "USER"));
@@ -40,7 +40,7 @@ public class GuidanceServiceApplication{
 				System.out.println(userApp.toString());
 			});
 		};
-	}
+	}*/
 
 	/*@Bean
 	BCryptPasswordEncoder getBCPE() {
