@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -17,4 +19,6 @@ public class Appli implements Serializable {
     private String appliName;
     private String appliUrl;
     private String idAppliKM;
+    @OneToMany(mappedBy = "appli")
+    private Collection<Content> contents = new ArrayList<>();
 }
