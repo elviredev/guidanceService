@@ -53,6 +53,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwt = JWT.create()
                 .withIssuer(request.getRequestURI())
                 .withClaim("id", userApp.getId())
+                //.withSubject(userApp.getUsername())
                 .withClaim("username", userApp.getUsername())
                 .withArrayClaim("roles", roles.toArray(new String[roles.size()]))
                 .withExpiresAt(new Date(System.currentTimeMillis() + SecurityParams.EXPIRATION))
