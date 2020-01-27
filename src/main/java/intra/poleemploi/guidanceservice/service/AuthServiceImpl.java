@@ -7,7 +7,7 @@ import intra.poleemploi.guidanceservice.entities.Appli;
 import intra.poleemploi.guidanceservice.entities.RoleApp;
 import intra.poleemploi.guidanceservice.entities.UserApp;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +21,8 @@ public class AuthServiceImpl implements AuthService {
     private RoleAppRepository roleAppRepository;
     @Autowired
     private AppliRepository appliRepository;
-   /* @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;*/
+   @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserApp saveUserApp(String username, String password, String confirmedPassword) {
@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
         userApp.setActivated(true);
         userApp.setPassword(password);
         // cryptage du pwd
-        // userApp.setPassword(bCryptPasswordEncoder.encode(password));
+        userApp.setPassword(bCryptPasswordEncoder.encode(password));
         // save in the BDD
         userAppRepository.save(userApp);
         // attribue role par défaut à user
