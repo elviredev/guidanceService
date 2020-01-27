@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.requiresChannel()
                 .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
                 .requiresSecure();
-        http.csrf().disable();
+        //http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/login/**", "/adminUsers/**", "/applis/**", "/contents/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/userApps/**").permitAll();
